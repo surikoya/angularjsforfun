@@ -5,22 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
-      .message { font-size: 1.3em; font-weight: bold; }
+      .message { font-size: 1.3em; font-weight: bold; padding: 10px;margin:5px;}
+      .invalid { border: 2px solid red; color:red;}
+      .valid { border: 2px solid green; color:green;}
+      .none {border: 0;}
     </style>
     <script src="lib/angular.min.js"></script>
     <script src="scripts/app.js"></script>
   </head>
-<body ng-app="lunch-checkr">
-   <div class="container" ng-controller="lunchController">
+<body ng-app="LunchCheck">
+   <div class="container" ng-controller="LunchCheckController">
      <h1>Lunch Checker</h1>
-
+         <h4 class="message" ng-class="isValid()">{{message}}</h4>
          <div class="form-group">
-             <input id="lunch-menu" type="text" ng-model="lunchMenu" ng-blur="validate()"
+             <input id="lunch-menu" type="text" ng-model="lunchMenu"
              placeholder="list comma separated dishes you usually have for lunch"
              class="form-control">
          </div>
          <div class="form-group">
-             <button class="btn btn-default">Check If Too Much</button>
+             <button class="btn btn-default" ng-click="checkQuantity()">Check If Too Much</button>
          </div>
          <div class="form-group message">
            <!-- Your message can go here. -->
